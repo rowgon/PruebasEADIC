@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabs con Imagen a la Derecha</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .container {
+            position: relative;
+            display: flex;
+            width: 100%;
+            max-width: 1200px; /* Contenedor más grande */
+            justify-content: space-between;
+        }
+
+        .tabs-container {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            margin-left: 50px;
+        }
+
+        .title {
+            font-size: 25px;
+            color: #B4B2CD;
+            cursor: pointer;
+            opacity: 0.7;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .title.active {
+            font-weight: bold;
+            opacity: 1;
+            color: #1F104F;
+        }
+
+        .tab {
+            display: none;
+            padding: 20px;
+            opacity: 0;
+            transform: rotateX(90deg);
+            transition: all 0.5s ease;
+            margin-bottom: 20px;
+            color: #585667;
+            text-align: left;
+        }
+
+        .tab.active {
+            display: block;
+            opacity: 1;
+            transform: rotateX(0deg);
+        }
+
+        /* Contenedor de imagen más grande */
+        .side-image-container {
+            width: 50%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .side-image-container img {
+            width: 400px; /* Imagen más grande */
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        /* Contador con imagen de fondo */
+        .counter-container {
+            display: none;
+            width: 400px;
+            height: 400px;
+            background-image: url('https://example.com/tu-imagen-de-fondo.jpg'); /* Cambia esta URL */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 48px;
+            font-weight: bold;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .counter-container span {
+            z-index: 1;
+        }
+
+        .subvencionado-text {
+            font-size: 24px;
+            font-weight: normal;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="tabs-container">
+        <div class="title active" data-tab="0">¿Qué es?</div>
+        <div class="tab active">
+            <p><strong>Programa de Transformación Digital para Directivos de PYMES</strong>
+                Este curso está diseñado para mejorar la competitividad de los directivos de pequeñas y medianas empresas a través de la transformación digital.</p>
+        </div>
+
+        <div class="title" data-tab="1">¿A quién va dirigido?</div>
+        <div class="tab">
+            <p><strong>Directivos de PYMES, Autónomos y Comercios</strong><br>
+                Este curso está dirigido a directivos de PYMES de 1 a 250 empleados que buscan actualizarse y conocer las últimas tendencias digitales.</p>
+        </div>
+
+        <div class="title" data-tab="2">¿Cuánto cuesta?</div>
+        <div class="tab">
+            <p><strong>Totalmente Subvencionado</strong><br>
+                Gracias a la subvención de la Unión Europea, este curso es completamente gratuito para los participantes.</p>
+        </div>
+    </div>
+
+    <!-- Contenedor de imagen a la derecha -->
+    <div class="side-image-container">
+        <img id="side-image" src="https://eadic.com/wp-content/uploads/2025/01/e0e3102a-46bd-4e67-9ccb-9f3bab263f90.png" alt="Imagen asociada al contenido">
+        <div class="counter-container" id="counter-container">
+            <span id="counter">1%</span>
+            <div class="subvencionado-text">Subvencionado</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const tabs = document.querySelectorAll('.tab');
+    const titles = document.querySelectorAll('.title');
+    const sideImage = document.getElementById('side-image');
+    const counterContainer = document.getElementById('counter-container');
+    const counter = document.getElementById('counter');
+    let currentTab = 0;
+    let interval;
+    let progressDuration = 3000;
+
+    function updateSideContent() {
+        const sideImageContent = [
+            'https://eadic.com/wp-content/uploads/2025/01/e0e3102a-46bd-4e67-9ccb-9f3bab263f90.png',
+            'https://eadic.com/wp-content/uploads/2025/01/7679daa9-3516-4639-9872-8fb3e73b7eb3.png',
+            null
+        ];
+
+        if (sideImageContent[currentTab] !== null) {
+            sideImage.src = sideImageContent[currentTab];
+            sideImage.style.display = 'block';
+            counterContainer.style.display = 'none';
+        } else {
+            sideImage.style.display = 'none';
+            counterContainer.style.display = 'flex';
+            startCounter();
+        }
+    }
+
+    function startCounter() {
+        let percentage = 1;
+        const increment = 100 / (1500 / 50);
+        const counterInterval = setInterval(() => {
+            if (percentage >= 100) {
+                clearInterval(counterInterval);
+                counter.textContent = "100%";
+            } else {
+                counter.textContent = `${Math.floor(percentage)}%`;
+                percentage += increment;
+            }
+        }, 50);
+    }
+
+    function switchTab(nextTab = null) {
+        tabs[currentTab].classList.remove('active');
+        titles[currentTab].classList.remove('active');
+
+        currentTab = nextTab !== null ? nextTab : (currentTab + 1) % tabs.length;
+
+        tabs[currentTab].classList.add('active');
+        titles[currentTab].classList.add('active');
+        updateSideContent();
+    }
+
+    titles.forEach((title, index) => {
+        title.addEventListener('click', () => {
+            clearInterval(interval);
+            switchTab(index);
+            interval = setInterval(() => switchTab(), progressDuration);
+        });
+    });
+
+    updateSideContent();
+    interval = setInterval(() => switchTab(), progressDuration);
+</script>
+
+</body>
+</html>

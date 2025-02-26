@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Efecto Hover Responsive</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+
+    .hover-effect {
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      text-align: center;
+      padding: 10px 20px; /* Espaciado para mejor visualización */
+    }
+
+    .hover-effect span {
+      color: black;
+      font-size: 24px; /* Tamaño de fuente inicial */
+      font-weight: bold;
+      position: relative;
+      z-index: 2;
+      transition: color 0.3s ease;
+    }
+
+    /* Línea inicial debajo del texto */
+    .hover-effect::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px; /* Grosor de la línea inicial */
+      background: #007bff; /* Color de la línea inicial */
+      z-index: 1;
+    }
+
+    /* Fondo que se expande al hacer hover */
+    .hover-effect::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px; /* Grosor inicial */
+      background: #007bff;
+      transition: transform 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+      transform: translateY(100%);
+      z-index: 1;
+      opacity: 0.8; /* Fondo semi-transparente */
+      border-radius: 4px; /* Bordes redondeados */
+    }
+
+    /* Efecto al hacer hover */
+    .hover-effect:hover::before {
+      transform: translateY(0);
+      height: 100%;
+      opacity: 1; /* Fondo completamente visible */
+    }
+
+    .hover-effect:hover span {
+      color: white;
+    }
+
+    /* Ajustes para tablets */
+    @media (max-width: 768px) {
+      .hover-effect span {
+        font-size: 20px; /* Tamaño de fuente más pequeño */
+      }
+
+      .hover-effect::after,
+      .hover-effect::before {
+        height: 3px; /* Línea más delgada */
+      }
+    }
+
+    /* Ajustes para móviles */
+    @media (max-width: 480px) {
+      .hover-effect span {
+        font-size: 18px; /* Tamaño de fuente más pequeño */
+      }
+
+      .hover-effect::after,
+      .hover-effect::before {
+        height: 2px; /* Línea más delgada */
+      }
+
+      .hover-effect {
+        padding: 8px 16px; /* Menos padding para pantallas pequeñas */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="hover-effect">
+    <span>Texto Principal</span>
+  </div>
+</body>
+</html>

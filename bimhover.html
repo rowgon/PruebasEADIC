@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Efecto Hover con Imagen</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+
+    .hover-card {
+      position: relative;
+      width: 300px;
+      height: 400px;
+      overflow: hidden;
+      border: 1px solid #ddd;
+      background-color: #333;
+    }
+
+    .hover-card img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .hover-card .main-image {
+      z-index: 1;
+    }
+
+    .hover-card .hidden-image {
+      transform: scale(0);
+      transform-origin: bottom right;
+      z-index: 2;
+    }
+
+    .hover-card .icon {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: #fff;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      z-index: 3;
+      transition: background 0.3s ease;
+    }
+
+    .hover-card .icon:hover {
+      background: #e91e63;
+    }
+
+    .hover-card .icon svg {
+      fill: #333;
+      width: 20px;
+      height: 20px;
+      transition: fill 0.3s ease;
+    }
+
+    .hover-card .icon:hover svg {
+      fill: #fff;
+    }
+
+    .hover-card:hover .hidden-image {
+      transform: scale(1);
+    }
+
+    .hover-card:hover .main-image {
+      transform: scale(0);
+    }
+  </style>
+</head>
+<body>
+  <div class="hover-card">
+    <img src="https://via.placeholder.com/300x200/333333/FFFFFF?text=Principal" alt="Main Image" class="main-image">
+    <img src="https://via.placeholder.com/300x200/007bff/FFFFFF?text=Secundaria" alt="Hidden Image" class="hidden-image">
+    <div class="icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 15h-2v-2h2zm0-4h-2V7h2z"/>
+      </svg>
+    </div>
+  </div>
+</body>
+</html>

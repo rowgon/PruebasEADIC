@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>DeepSeek - Módulos del Curso</title>
+    <!-- Cargar la tipografía Roboto desde Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Aplicar la tipografía Roboto a toda la página */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .container {
+            position: relative;
+            display: flex;
+            width: 100%;
+            max-width: 1000px;
+            justify-content: space-between;
+        }
+
+        /* Contenedor de las tabs */
+        .tabs-container {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            margin-left: 50px; /* Margen para separar las tabs de la barra de progreso */
+        }
+
+        /* Títulos y Tabs */
+        .title {
+            font-size: 25px; /* Tamaño de los títulos */
+            color: #B4B2CD; /* Color para los títulos inactivos */
+            cursor: pointer;
+            opacity: 0.7;
+            margin-bottom: 10px;
+            text-align: left; /* Alinear los títulos a la izquierda */
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+        }
+
+        .title.active {
+            font-weight: bold;
+            opacity: 1;
+            color: #1F104F; /* Color para el título activo */
+        }
+
+        .title img {
+            width: 24px; /* Tamaño del icono */
+            height: 24px;
+        }
+
+        /* Barra de progreso individual para cada título */
+        .title .progress-bar {
+            position: absolute;
+            left: 0;
+            bottom: -5px; /* Posición debajo del título */
+            width: 100%; /* Ancho del título */
+            height: 4px;
+            background: rgba(0,0,0,0.1);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .title .progress-bar .progress {
+            width: 0;
+            height: 100%;
+            background: #1F104F; /* Color de la barra de progreso */
+            border-radius: 2px;
+            transition: width 3s ease-in-out; /* Animación de la barra de progreso */
+        }
+
+        .tab {
+            display: none;
+            background: transparent; /* Fondo transparente */
+            padding: 20px;
+            opacity: 0;
+            transform: rotateX(90deg);
+            transition: all 0.5s ease;
+            margin-bottom: 20px;
+            color: #585667; /* Color de la fuente dentro de la tab */
+            text-align: left; /* Alinear el contenido de las tabs a la izquierda */
+        }
+
+        .tab.active {
+            display: block;
+            opacity: 1;
+            transform: rotateX(0deg); /* Efecto de rotación */
+        }
+
+        /* Contenedor de imagen a la derecha */
+        .side-image-container {
+            width: 40%;
+            background: transparent; /* Fondo transparente */
+            padding: 20px;
+            position: relative;
+            margin-left: 70px; /* Mover el texto más a la derecha */
+        }
+
+        .side-image-container .content {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .side-image-container .content img {
+            width: 100%; /* Imagen ajustada al contenedor */
+            background: transparent; /* Fondo transparente */
+            box-shadow: none; /* Eliminar cualquier sombra */
+            border-radius: 0; /* Eliminar borde redondeado */
+        }
+
+        .side-image-container .content .icon-text {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .side-image-container .content .icon-text img {
+            width: 24px; /* Tamaño del icono */
+            height: 24px;
+        }
+
+        .side-image-container .content p {
+            margin: 0;
+            font-size: 16px;
+            color: #585667;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Contenedor de Tabs -->
+        <div class="tabs-container">
+            <div class="title active" data-tab="0">
+                01. La empresa en la Economía Digital
+                <img src="icon1.png" alt="Icono 1">
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+            </div>
+            <div class="tab active">
+                <p><strong>25 Horas</strong><br>
+                    Descubrirás cómo triunfar en la economía digital comprendiendo el contexto digital actual, los modelos de negocio innovadores y la transformación digital en las empresas.</p>
+            </div>
+
+            <div class="title" data-tab="1">
+                02. Transformando la Experiencia del Cliente
+                <img src="icon2.png" alt="Icono 2">
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+            </div>
+            <div class="tab">
+                <p><strong>40 Horas</strong><br>
+                    Aprenderás a integrar sostenibilidad y economía circular en tu estrategia, y a desarrollar un plan de transformación digital efectivo desde el diagnóstico hasta la reflexión estratégica.</p>
+            </div>
+
+            <div class="title" data-tab="2">
+                03. Habilitando Tecnológicamente la Transformación
+                <img src="icon3.png" alt="Icono 3">
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+            </div>
+            <div class="tab">
+                <p><strong>40 Horas</strong><br>
+                    Este módulo te permitirá comprender cómo la tecnología habilita la transformación digital en las empresas.</p>
+            </div>
+
+            <div class="title" data-tab="3">
+                04. Gestionando el Cambio
+                <img src="icon4.png" alt="Icono 4">
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+            </div>
+            <div class="tab">
+                <p><strong>16 Horas</strong><br>
+                    Aprenderás a gestionar el cambio en tu organización para asegurar una transformación digital exitosa.</p>
+            </div>
+
+            <div class="title" data-tab="4">
+                05. Casos de uso sectoriales
+                <img src="icon5.png" alt="Icono 5">
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+            </div>
+            <div class="tab">
+                <p><strong>15 Horas</strong><br>
+                    Explorarás casos de uso reales en diferentes sectores para entender cómo aplicar la transformación digital en tu industria.</p>
+            </div>
+        </div>
+
+        <!-- Contenedor de imagen a la derecha -->
+        <div class="side-image-container">
+            <div class="content" id="side-content">
+                <h2>01. La empresa en la Economía Digital</h2>
+                <img src="module1.jpg" alt="Imagen del módulo 1">
+                <div class="icon-text">
+                    <img src="icon1.png" alt="Icono 1">
+                    <p>25 Horas</p>
+                </div>
+                <p>Descubrirás cómo triunfar en la economía digital comprendiendo el contexto digital actual, los modelos de negocio innovadores y la transformación digital en las empresas.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const tabs = document.querySelectorAll('.tab');
+        const titles = document.querySelectorAll('.title');
+        const sideContent = document.getElementById('side-content');
+        let currentTab = 0;
+        let interval;
+        let progressDuration = 3000; // Duración de la animación de la barra
+
+        // Función para actualizar el contenido de la columna derecha
+        function updateSideContent() {
+            const sideContentData = [
+                {
+                    title: "01. La empresa en la Economía Digital",
+                    image: "module1.jpg",
+                    icon: "icon1.png",
+                    hours: "25 Horas",
+                    description: "Descubrirás cómo triunfar en la economía digital comprendiendo el contexto digital actual, los modelos de negocio innovadores y la transformación digital en las empresas."
+                },
+                {
+                    title: "02. Transformando la Experiencia del Cliente",
+                    image: "module2.jpg",
+                    icon: "icon2.png",
+                    hours: "40 Horas",
+                    description: "Aprenderás a integrar sostenibilidad y economía circular en tu estrategia, y a desarrollar un plan de transformación digital efectivo desde el diagnóstico hasta la reflexión estratégica."
+                },
+                {
+                    title: "03. Habilitando Tecnológicamente la Transformación",
+                    image: "module3.jpg",
+                    icon: "icon3.png",
+                    hours: "40 Horas",
+                    description: "Este módulo te permitirá comprender cómo la tecnología habilita la transformación digital en las empresas."
+                },
+                {
+                    title: "04. Gestionando el Cambio",
+                    image: "module4.jpg",
+                    icon: "icon4.png",
+                    hours: "16 Horas",
+                    description: "Aprenderás a gestionar el cambio en tu organización para asegurar una transformación digital exitosa."
+                },
+                {
+                    title: "05. Casos de uso sectoriales",
+                    image: "module5.jpg",
+                    icon: "icon5.png",
+                    hours: "15 Horas",
+                    description: "Explorarás casos de uso reales en diferentes sectores para entender cómo aplicar la transformación digital en tu industria."
+                }
+            ];
+
+            sideContent.innerHTML = `
+                <h2>${sideContentData[currentTab].title}</h2>
+                <img src="${sideContentData[currentTab].image}" alt="Imagen del módulo ${currentTab + 1}">
+                <div class="icon-text">
+                    <img src="${sideContentData[currentTab].icon}" alt="Icono ${currentTab + 1}">
+                    <p>${sideContentData[currentTab].hours}</p>
+                </div>
+                <p>${sideContentData[currentTab].description}</p>
+            `;
+        }
+
+        // Función para reiniciar la barra de progreso
+        function updateProgressBar() {
+            const progressBars = document.querySelectorAll('.title .progress');
+            progressBars.forEach(bar => bar.style.width = '0%'); // Reseteamos todas las barras
+
+            const activeProgressBar = titles[currentTab].querySelector('.progress');
+            activeProgressBar.style.transition = `width ${progressDuration}ms ease-in-out`; // Reactivamos la transición
+            activeProgressBar.style.width = '100%'; // Hacemos que la barra crezca
+        }
+
+        // Función para cambiar de tab
+        function switchTab(nextTab = null) {
+            tabs[currentTab].classList.remove('active');
+            titles[currentTab].classList.remove('active');
+            
+            if (nextTab !== null) {
+                currentTab = nextTab;
+            } else {
+                currentTab = (currentTab + 1) % tabs.length;
+            }
+            
+            tabs[currentTab].classList.add('active');
+            titles[currentTab].classList.add('active');
+            updateSideContent(); // Actualiza el contenido de la columna derecha
+            updateProgressBar();
+        }
+
+        titles.forEach((title, index) => {
+            title.addEventListener('click', () => {
+                clearInterval(interval);
+                switchTab(index);
+                interval = setInterval(() => switchTab(), progressDuration);
+            });
+
+            title.addEventListener('mouseover', () => {
+                // Detener la barra de progreso cuando el mouse entra en la tab
+                clearInterval(interval);
+                const activeProgressBar = titles[currentTab].querySelector('.progress');
+                activeProgressBar.style.transition = 'none'; // Detener la transición
+                activeProgressBar.style.width = '0%'; // Detener el progreso
+            });
+
+            title.addEventListener('mouseout', () => {
+                // Reiniciar la barra de progreso cuando el mouse sale de la tab
+                interval = setInterval(() => switchTab(), progressDuration);
+                updateProgressBar(); // Reiniciar la barra de progreso
+            });
+        });
+
+        // Iniciar ciclo automático
+        updateSideContent(); // Mostrar el contenido inicial
+        updateProgressBar();
+        interval = setInterval(() => switchTab(), progressDuration);
+    </script>
+</body>
+</html>
