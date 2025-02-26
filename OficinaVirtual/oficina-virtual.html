@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Reset de márgenes y padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Aalto Sans Pro', sans-serif;
+            background-color: #fff;
+        }
+
+        .navbar {
+            background-color: white;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+            height: 153px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 100px;
+        }
+
+        .navbar .logo {
+            height: 70px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            background-color: #003D95;
+            padding: 10px 20px;
+            border-radius: 50px;
+        }
+
+        .user-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #003D93;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .user-name {
+            color: white;
+            font-size: 20px;
+            text-transform: uppercase;
+        }
+
+        .main-content {
+            text-align: center;
+            background: url('https://eadic.org/secretaria_academica_clon/secretaria_academica/public/img/oficina-virtual-fondo.png') no-repeat center center;
+            background-size: cover;
+
+        }
+
+        .welcome-section h1 {
+            font-size: 60px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .card {
+            background-color: #fff;
+            width: 80%;
+            margin: 0 auto;
+            border-radius: 25px;
+            position: relative;
+        }
+
+        .welcome-section p {
+            font-size: 30px;
+            font-weight: 400;
+            color: #82C7E6;
+        }
+
+        .options-section {
+            display: flex;
+            justify-content: space-around;
+            margin: 50px 0;
+        }
+
+        .options {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 700px;
+            transition: all 0.3s ease;
+        }
+
+        .options h2 {
+            font-size: 60px;
+            color: #003D93;
+            margin-bottom: 30px;
+        }
+
+        .active-student {
+            width: 100%;
+        }
+
+        .text-student {
+            margin: 0 auto;
+            width: 80%;
+
+            padding-top: 30px;
+            padding-bottom: 10px;
+
+            text-align: start;
+        }
+
+        .title-card {
+            font-size: 40px;
+            font-weight: 600;
+            color: #003D93;
+        }
+
+        .subtitle-card {
+            font-weight: 300;
+            font-size: 17px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+
+
+        }
+
+        .alumni {
+            width: 100%;
+
+        }
+
+        .button-option {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .button-option:hover {
+            background: linear-gradient(to right, #EFF5FF, #fff);
+            /* Gradiente en el hover */
+            color: #003D93;
+
+            transition: ease-in-out 5ms;
+
+        }
+
+        .option-info h3 {
+            text-align: start;
+            font-size: 30px;
+            font-weight: 600;
+            color: #003D93;
+            transition: color 0.3s ease;
+        }
+
+        .option-info p {
+            font-size: 17px;
+            font-weight: 300;
+            color: #0C1743;
+            transition: color 0.3s ease;
+        }
+
+        .button-option:hover .option-info h3,
+        .button-option:hover .option-info p {
+            color: #003D93;
+        }
+
+        .btn-arrow {
+            background-color: #EFF5FF;
+            width: 60px;
+            height: 40px;
+            border-radius: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .button-option:hover .btn-arrow {
+            background-color: #003D95;
+            color: #fff;
+        }
+
+        .arrow-icon {
+            font-size: 30px;
+            font-weight: 900;
+            color: #003D93;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .button-option:hover .arrow-icon {
+            transform: translateX(10px);
+            color: #fff;
+        }
+
+        .footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+    </style>
+    <title>Portal EADIC</title>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <img src="https://eadic.org/secretaria_academica_clon/secretaria_academica/public/img/logo-eadic.png"
+                alt="Logo EADIC" class="logo">
+        </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <main class="main-content">
+        <section class="welcome-section">
+            <h1>Bienvenido al Portal EADIC</h1>
+            <p>Acompañándote en cada paso</p>
+        </section>
+
+        <div class="card">
+            <section class="options-section">
+                <!-- Opciones para alumnos activos -->
+                <div class=" active-student">
+
+                    <div class="text-student">
+                        <h2 class="title-card">¿Eres alumno activo?</h2>
+                        <p class="subtitle-card">Accede a:</p>
+                    </div>
+
+                    <div class="button-option">
+
+                        <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_419_51)">
+                                <path d="M46.875 41.4062V18.75C46.875 17.0234 45.4766 15.625 43.75 15.625H42.1875"
+                                    stroke="#2F3542" stroke-width="2" stroke-linecap="square" stroke-linejoin="round" />
+                                <path d="M18.75 15.625H29.6875" stroke="#2F3542" stroke-width="2"
+                                    stroke-linecap="square" stroke-linejoin="round" />
+                                <path d="M3.125 41.4062V18.75C3.125 17.0234 4.52344 15.625 6.25 15.625H7.8125"
+                                    stroke="#2F3542" stroke-width="2" stroke-linecap="square" stroke-linejoin="round" />
+                                <path
+                                    d="M44.5312 49.2188H5.46875C2.88281 49.2188 0.78125 47.1172 0.78125 44.5312H19.5312V46.0938H30.4688V44.5312H49.2188C49.2188 47.1172 47.1172 49.2188 44.5312 49.2188Z"
+                                    stroke="#2F3542" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path
+                                    d="M38.2812 3.125L34.375 11.7188V38.4062C34.375 39.6328 35.3672 40.625 36.5938 40.625H39.9687C41.1953 40.625 42.1875 39.6328 42.1875 38.4062V11.7188L38.2812 3.125Z"
+                                    stroke="#003D93" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M37.5 11.7188H42.1875" stroke="#003D93" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M37.5 5.46875H39.0625" stroke="#003D93" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M37.5 34.375H42.1875" stroke="#003D93" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M7.8125 11.7188H10.1562" stroke="#003D93" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M7.8125 33.5938V0.78125H18.75V22.6562" stroke="#003D93" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M7.8125 19.5312H11.7188" stroke="#003D93" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M7.8125 26.5625H10.1562" stroke="#003D93" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path
+                                    d="M13.8438 6.25C13.8438 6.56066 13.5919 6.8125 13.2812 6.8125C12.9706 6.8125 12.7188 6.56066 12.7188 6.25C12.7188 5.93934 12.9706 5.6875 13.2812 5.6875C13.5919 5.6875 13.8438 5.93934 13.8438 6.25Z"
+                                    fill="#464646" stroke="#003D93" stroke-width="2" />
+                                <path d="M30.4688 26.8125L25 21.0938L7.8125 39.0625H30.4688" stroke="#003D93"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M19.5312 34.375H30.4688L25 28.9062L19.5312 34.375Z" stroke="#003D93"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_419_51">
+                                    <rect width="50" height="50" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+
+                        <div class="option-info">
+                            <h3>Campus Virtual</h3>
+                            <p>Ingresa a nuestra plataforma online</p>
+                        </div>
+                        <div class="btn-arrow">
+                            <div class="arrow-icon">→</div>
+                        </div>
+                    </div>
+
+                    <div class="button-option">
+
+                        <svg width="49" height="42" viewBox="0 0 49 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12.0872 12.0872C14.3124 9.86198 14.3124 6.25423 12.0872 4.02903C9.86203 1.80383 6.25427 1.80383 4.02908 4.02903C1.80388 6.25423 1.80388 9.86198 4.02908 12.0872C6.25427 14.3124 9.86203 14.3124 12.0872 12.0872Z"
+                                stroke="#003D93" stroke-width="2" stroke-linejoin="round" />
+                            <path d="M14.6981 40.3291C14.6981 40.3291 14.5837 40.3291 14.6308 35.1947" stroke="#003D93"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M1.15771 17.3787C1.66559 17.187 2.15028 17.0448 2.58781 16.9559C5.32432 16.3985 7.3999 16.3985 11.2828 16.9559C15.1657 17.5132 18.6467 20.1438 18.8129 24.1821L19.0958 31.0272L25.9548 31.9897C27.3115 32.227 28.2244 33.4507 27.9879 34.822C27.9809 34.8607 27.974 34.8993 27.9655 34.9372C27.7173 36.0651 26.6235 36.801 25.4763 36.6634L16.1938 35.4033C14.5141 35.1753 13.2432 33.7715 13.1821 32.0778L12.8946 24.0399"
+                                stroke="#003D93" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M17.2854 16.6148V7.3308C17.2854 5.64328 18.6536 4.27502 20.3411 4.27502H44.9442C46.6318 4.27502 48 5.64328 48 7.3308V24.4263C48 26.1138 46.6318 27.482 44.9442 27.482H21.5625"
+                                stroke="#2F3542" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M20.9402 23.3069H47.9776" stroke="#2F3542" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M35.1314 27.5153H30.1539V32.0382H35.1314V27.5153Z" stroke="#2F3542"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M29.2255 32.1365H48" stroke="#2F3542" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path
+                                d="M32.6423 15.817C34.8081 15.817 36.5639 14.0613 36.5639 11.8954C36.5639 9.72962 34.8081 7.97388 32.6423 7.97388C30.4765 7.97388 28.7207 9.72962 28.7207 11.8954C28.7207 14.0613 30.4765 15.817 32.6423 15.817Z"
+                                stroke="#2F3542" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M27 23.3198C27 20.2038 28.3203 16.5659 32.6423 16.5659C36.9643 16.5659 38.2846 20.2038 38.2846 23.3198"
+                                stroke="#2F3542" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+
+                        <div class="option-info">
+                            <h3>Oficina Virtual</h3>
+                            <p>Encontrarás los servicios dispuestos para ti</p>
+                        </div>
+                        <div class="btn-arrow">
+                            <div class="arrow-icon">→</div>
+                        </div>
+                    </div>
+
+                    <div class="button-option">
+                        <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_443_101)">
+                                <path
+                                    d="M41.9375 33.6875C42.6938 33.6875 43.3125 33.0688 43.3125 32.3125V2.0625C43.3125 1.30625 42.6938 0.6875 41.9375 0.6875H2.0625C1.30625 0.6875 0.6875 1.30625 0.6875 2.0625V32.3125C0.6875 33.0688 1.30625 33.6875 2.0625 33.6875H10.3125"
+                                    stroke="#003D93" stroke-width="2" stroke-linecap="square" stroke-linejoin="round" />
+                                <path d="M18.5625 11.6875H25.4375" stroke="#003D93" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M15.125 15.8125H28.875" stroke="#003D93" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M19.25 29.5625L19.9375 37.8125L17.1875 36.4375L14.4375 37.8125L14.7812 33.66"
+                                    stroke="#003D93" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path
+                                    d="M20.625 23.1619V22.6875C20.625 22.3094 20.3156 22 19.9375 22H19.4631C18.9131 22 18.3906 21.78 18.0056 21.395L17.6688 21.0581C17.4006 20.79 16.9675 20.79 16.6994 21.0581L16.3625 21.395C15.9775 21.78 15.4481 22 14.905 22H14.4306C14.0525 22 13.7431 22.3094 13.7431 22.6875V23.1619C13.7431 23.7119 13.5231 24.2344 13.1381 24.6194L12.8013 24.9563C12.5331 25.2244 12.5331 25.6575 12.8013 25.9256L13.1381 26.2625C13.5231 26.6475 13.7431 27.1769 13.7431 27.72V28.1944C13.7431 28.5725 14.0525 28.8819 14.4306 28.8819H14.905C15.455 28.8819 15.9775 29.1019 16.3625 29.4869L16.6994 29.8238C16.9675 30.0919 17.4006 30.0919 17.6688 29.8238L18.0056 29.4869C18.3906 29.1019 18.92 28.8819 19.4631 28.8819H19.9375C20.3156 28.8819 20.625 28.5725 20.625 28.1944V27.72C20.625 27.17 20.845 26.6475 21.23 26.2625L21.5669 25.9256C21.835 25.6575 21.835 25.2244 21.5669 24.9563L21.23 24.6194C20.845 24.2344 20.625 23.705 20.625 23.1619Z"
+                                    stroke="#003D93" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path
+                                    d="M9.625 29.5625C9.625 27.2869 7.77562 25.4375 5.5 25.4375V9.625C7.77562 9.625 9.625 7.77562 9.625 5.5H34.375C34.375 7.77562 36.2244 9.625 38.5 9.625V25.4375C37.785 25.4375 37.1112 25.6231 36.52 25.9463C35.9356 26.2694 35.4338 26.73 35.0625 27.2869"
+                                    stroke="#003D93" stroke-width="2" stroke-linecap="square" stroke-linejoin="round" />
+                                <path
+                                    d="M25.4375 24.75V39.875L29.5625 36.4375L33.6875 43.3125L37.125 41.25L33 34.375L37.8125 33L25.4375 24.75Z"
+                                    stroke="#2F3542" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_443_101">
+                                    <rect width="44" height="44" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+
+                        <div class="option-info">
+                            <h3>Secretaría Académica</h3>
+                            <p>Consulta el estado de titulación</p>
+                        </div>
+                        <div class="btn-arrow">
+                            <div class="arrow-icon">→</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Opciones para egresados -->
+                <div class="alumni">
+                    <div class="text-student">
+                        <h2 class="title-card">¿Eres egresado?</h2>
+                        <p class="subtitle-card">Conoce todas las oportunidades diseñadas para ti: </p>
+                    </div>
+                    <div class="button-option">
+                        <svg width="63" height="57" viewBox="0 0 63 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M47.9998 26.3784C52.9704 21.5222 52.9704 13.6489 47.9999 8.79278C43.0293 3.93667 34.9705 3.93667 30 8.79279C25.0294 13.6489 25.0294 21.5222 29.9999 26.3784C34.9705 31.2345 43.0293 31.2345 47.9998 26.3784Z"
+                                stroke="#003D93" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M27.6949 50.51C27.9433 49.4815 27.2914 48.451 26.2387 48.2083C25.186 47.9656 24.1312 48.6025 23.8827 49.631C23.6343 50.6594 24.2862 51.6899 25.3389 51.9327C26.3916 52.1754 27.4464 51.5385 27.6949 50.51Z"
+                                stroke="#2F3542" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M15.6065 14.7688C15.855 13.7403 15.203 12.7098 14.1503 12.4671C13.0976 12.2243 12.0428 12.8613 11.7944 13.8898C11.5459 14.9182 12.1979 15.9487 13.2506 16.1915C14.3032 16.4342 15.358 15.7973 15.6065 14.7688Z"
+                                stroke="#2F3542" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M60.1183 38.413C61.1176 38.0086 61.5922 36.8893 61.1782 35.913C60.7643 34.9368 59.6187 34.4731 58.6194 34.8775C57.6201 35.2819 57.1456 36.4012 57.5595 37.3775C57.9734 38.3537 59.1191 38.8173 60.1183 38.413Z"
+                                stroke="#2F3542" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M20.3572 36.3504C21.544 31.438 18.4299 26.5158 13.4018 25.3564C8.37368 24.197 3.33554 27.2394 2.14879 32.1517C0.962047 37.0641 4.0761 41.9863 9.10422 43.1457C14.1323 44.3051 19.1705 41.2628 20.3572 36.3504Z"
+                                stroke="#2F3542" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M52.8412 47.1586C54.028 42.2462 50.9139 37.3241 45.8858 36.1646C40.8577 35.0052 35.8195 38.0476 34.6328 42.96C33.4461 47.8723 36.5601 52.7945 41.5882 53.9539C46.6163 55.1134 51.6545 52.071 52.8412 47.1586Z"
+                                stroke="#2F3542" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M41 33L40 32" stroke="#2F3542" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M24 39L30 41" stroke="#2F3542" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M22 28L26 26" stroke="#2F3542" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M13 20V22" stroke="#2F3542" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M22 46L20 44" stroke="#2F3542" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path
+                                d="M32.6376 24C33.486 21.6132 35.9061 20 38.6376 20C41.3691 20 43.7891 21.6132 44.6376 24"
+                                stroke="#003D93" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M39.1376 16C41.0706 16 42.6376 14.433 42.6376 12.5C42.6376 10.567 41.0706 9 39.1376 9C37.2046 9 35.6376 10.567 35.6376 12.5C35.6376 14.433 37.2046 16 39.1376 16Z"
+                                stroke="#003D93" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M39 50C39.6363 48.2099 41.4514 47 43.5 47C45.5486 47 47.3637 48.2099 48 50"
+                                stroke="#2F3542" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M43.5 44C44.8807 44 46 42.8807 46 41.5C46 40.1193 44.8807 39 43.5 39C42.1193 39 41 40.1193 41 41.5C41 42.8807 42.1193 44 43.5 44Z"
+                                stroke="#2F3542" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M7 39C7.63634 37.2099 9.45137 36 11.5 36C13.5486 36 15.3637 37.2099 16 39"
+                                stroke="#2F3542" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M11.5 33C12.8807 33 14 31.8807 14 30.5C14 29.1193 12.8807 28 11.5 28C10.1193 28 9 29.1193 9 30.5C9 31.8807 10.1193 33 11.5 33Z"
+                                stroke="#2F3542" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <div class="option-info">
+                            <h3>Acceso al portal alumni</h3>
+                            <p>Conecta, comparte y crece conjuntamente</p>
+                        </div>
+                        <div class="btn-arrow">
+                            <div class="arrow-icon">→</div>
+                        </div>
+                    </div>
+
+                    <div class="button-option">
+
+                        <svg width="48" height="46" viewBox="0 0 48 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M5 1H34C36.21 1 38 2.79 38 5V28C38 30.21 36.21 32 34 32H15.7L8.72 39.22C8.1 39.87 7 39.42 7 38.53V32H5C2.79 32 1 30.21 1 28V5C1 2.79 2.79 1 5 1Z"
+                                stroke="#003D93" stroke-width="2" stroke-linejoin="round" />
+                            <path
+                                d="M20 34C20 36.21 21.79 38 24 38H33L39.29 44.29C39.92 44.92 41 44.47 41 43.58V37.99H43C45.21 37.99 47 36.2 47 33.99V18.99C47 16.78 45.21 14.99 43 14.99H40"
+                                stroke="#2F3542" stroke-width="2" stroke-linejoin="round" />
+                            <path
+                                d="M31 17.88V15.12C31 14.61 30.59 14 30.08 14H28.63C28.23 14 27.88 13.83 27.76 13.45C27.66 13.14 27.55 12.93 27.42 12.68C27.24 12.32 27.29 11.91 27.58 11.62L28.62 10.58C28.98 10.22 28.98 9.64999 28.62 9.28999L26.66 7.32999C26.3 6.96999 25.72 6.96999 25.36 7.32999L24.31 8.37999C24.03 8.65999 23.6 8.71999 23.24 8.53999C22.98 8.41999 22.82 8.30999 22.55 8.20999C22.17 8.07999 22.01 7.73999 22.01 7.33999V5.90999C22.01 5.39999 21.4 4.98999 20.89 4.98999H18.13C17.62 4.98999 17.01 5.39999 17.01 5.90999V7.33999C17.01 7.73999 16.84 8.07999 16.47 8.20999C16.2 8.30999 15.98 8.41999 15.73 8.53999C15.37 8.70999 14.97 8.65999 14.68 8.37999L13.64 7.32999C13.28 6.96999 12.7 6.96999 12.35 7.32999L10.4 9.28999C10.04 9.64999 10.04 10.23 10.4 10.59L11.45 11.65C11.73 11.94 11.79 12.37 11.61 12.73C11.48 12.98 11.37 13.14 11.27 13.45C11.15 13.83 10.8 14 10.4 14H8.95003C8.44003 14 8.03003 14.61 8.03003 15.12V17.88C8.03003 18.39 8.44003 19 8.95003 19H10.4C10.8 19 11.15 19.17 11.28 19.55C11.38 19.84 11.49 20.04 11.62 20.27C11.81 20.62 11.74 21.04 11.45 21.32L10.43 22.33C10.07 22.69 10.07 23.27 10.43 23.63L12.38 25.57C12.74 25.93 13.32 25.93 13.68 25.57L14.73 24.52C15.01 24.24 15.44 24.18 15.8 24.35C16.06 24.47 16.22 24.58 16.49 24.67C16.87 24.8 17.03 25.14 17.03 25.54V27.07C17.03 27.58 17.64 27.99 18.15 27.99H20.91C21.42 27.99 22.03 27.58 22.03 27.07V25.54C22.03 25.14 22.19 24.8 22.57 24.67C22.84 24.57 23.06 24.46 23.31 24.34C23.67 24.17 24.07 24.22 24.36 24.5L25.4 25.55C25.76 25.91 26.34 25.91 26.69 25.55L28.63 23.6C28.99 23.24 28.99 22.65 28.63 22.3L27.61 21.29C27.32 21.01 27.25 20.57 27.44 20.21C27.57 19.97 27.68 19.83 27.78 19.54C27.91 19.16 28.25 18.99 28.66 18.99H30.11C30.62 18.99 31.03 18.38 31.03 17.87L31 17.88Z"
+                                stroke="#003D93" stroke-width="2" stroke-linejoin="round" />
+                            <path
+                                d="M19.5 20C21.433 20 23 18.433 23 16.5C23 14.567 21.433 13 19.5 13C17.567 13 16 14.567 16 16.5C16 18.433 17.567 20 19.5 20Z"
+                                stroke="#003D93" stroke-width="2" stroke-linejoin="round" />
+                        </svg>
+
+                        <div class="option-info">
+                            <h3>Atención Alumni (Calendly)</h3>
+                            <p>Agenda una reunión con uno de nuestros consultores</p>
+                        </div>
+                        <div class="btn-arrow">
+                            <div class="arrow-icon">→</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2024 EADIC Engineering & Business School</p>
+    </footer>
+</body>
+
+</html>

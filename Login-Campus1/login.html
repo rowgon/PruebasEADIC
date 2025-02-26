@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login</title>
+    <style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url('Imagen/login-eadic-campus.png') no-repeat center center fixed;
+    background-size: cover;
+    background-position: center center; /* Posición por defecto */
+    color: #333;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Consulta de medios para teléfonos */
+@media only screen and (max-width: 768px) {
+    body {
+        background-position: center 30%; /* Mueve el fondo un 30% hacia arriba en teléfonos */
+    }
+}
+
+        .container {
+    max-width: 400px;
+    width: 90%;
+    padding: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 2s ease-in-out;
+    text-align: center;
+    margin-top: 6%;
+}
+
+/* Consulta de medios para teléfonos */
+@media only screen and (max-width: 768px) {
+    .container {
+        margin-top: 43%;
+    }
+}
+
+/* Consulta de medios para teléfonos en orientación horizontal */
+@media only screen and (max-width: 768px) and (orientation: landscape) {
+    .container {
+        margin-top: 59%; /* Ajusta este valor según sea necesario */
+    }
+}
+
+        .logo-outside {
+            align-items: center;
+            justify-content: center;
+            height: auto;
+        }
+        .welcome-text {
+            margin-bottom: 40px;
+            font-size: 0.7em;
+        }
+        .info-box {
+            text-align: center;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="password"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 94%;
+        }
+        input[type="image"] {
+            width: 35%;
+            margin: 0 auto;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .forgot-password {
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+        .forgot-password a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #2045A0;
+            color: #fff;
+            cursor: pointer;
+            width: 64%;
+            margin: 0 auto;
+    
+        }
+        .help-text {
+            font-size: 0.9em;
+        }
+        .help-text a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        .help-text a:hover {
+            text-decoration: underline;
+        }
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+   
+</head>
+<body>
+    <!-- Logo fuera del contenedor del formulario -->
+    <div class="logo-outside">
+        <img src="Imagen/EADIC.png" alt="Logo" />
+    </div>
+    <div class="container">
+        <!-- Logo centrado
+        <div class="logo">
+            <img src="Imagen/Favicon_eadic (1).png" alt="Logo">
+        </div> -->
+
+        <div class="welcome-text">
+            <h1>Autenticarse para iniciar sesión</h1>
+        </div>
+
+        <div class="info-box">
+            <p></p>
+        </div>
+
+        <form action="https://advanced.campus-eadic.com/login/index.php" method="post" name="login" id="login" >
+            <input type="text" name="username" placeholder="Usuario" required>
+            <input type="password" name="password" placeholder="Contraseña" required>
+            <input type="image" src="Imagen/ingresar.svg" alt="Ingresar">
+            <div id="error-message" class="error-message"></div>
+             <div class="forgot-password">
+                <a href="https://advanced.campus-eadic.com/login/forgot_password.php">¿Olvidaste tu contraseña?</a>
+            </div>
+            <div id="error-message" class="error-message"></div>
+        </form>
+
+        <div class="help-text">
+            <p>¿Necesita ayuda? Consulte nuestras <a href="https://soporte.eadic.biz/">sugerencias y asistencia</a>.</p>
+        </div>
+    </div>
+</body>
+</html>
+
