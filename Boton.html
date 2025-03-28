@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botón More Info</title>
+    <!-- Carga de PP Neue Montreal desde Adobe Fonts -->
+    <link rel="stylesheet" href="https://use.typekit.net/xxxxxx.css">
+    
+</head>
+<body>
+    <!-- CONTENEDOR DEL BOTÓN -->
+    <div class="btn-More-container">
+        <!-- BOTÓN CON ICONOS Y TEXTO -->
+        <a href="#" class="btn-More">
+            <span class="btn-More-icon">
+                <!-- ICONO NORMAL -->
+                <img class="icon-More-normal" 
+                     src="http://kinedrik.com/wp-content/uploads/2025/03/Frame-2-1.svg" 
+                     alt="Icono normal">
+                <!-- ICONO HOVER -->
+                <img class="icon-More-hover" 
+                     src="http://kinedrik.com/wp-content/uploads/2025/03/Frame-22.svg" 
+                     alt="Icono hover">
+            </span>
+            <span class="btn-More-text">More Info</span>
+        </a>
+    </div>
+</body>
+</html>
+
+
+
+
+
+        /* CONTENEDOR PRINCIPAL (centrado) */
+        .btn-More-container {
+            display: flex;
+            justify-content: center;
+            padding: 10px 10px;
+        }
+
+        /* BOTÓN PRINCIPAL */
+        .btn-More {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 15px;
+            background-color: #2885FF; /* Verde Kinedrik */
+            color: #FFFFFF;
+            font-family: "PP Neue Montreal", sans-serif;
+            font-size: 1.250rem;
+            font-weight: 500; /* Medium */
+            letter-spacing: 0.03em;
+            line-height: 1;
+            text-transform: capitalize;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* EFECTO HOVER */
+        .btn-More:hover {
+            background-color: #E7E7E7; /* Verde oscuro */
+            color: #040025;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* CONTENEDOR DE ICONOS */
+        .btn-More-icon {
+            margin-right: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            position: relative;
+        }
+
+        /* ICONOS SVG */
+        .btn-More-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: all 0.4s ease;
+        }
+
+        /* ICONO NORMAL (visible inicialmente) */
+        .icon-More-normal {
+            position: absolute;
+            opacity: 1;
+            transform: rotate(0deg);
+        }
+
+        /* ICONO HOVER (oculto inicialmente) */
+        .icon-More-hover {
+            position: absolute;
+            opacity: 0;
+            transform: rotate(-15deg);
+        }
+
+        /* ANIMACIONES HOVER */
+        .btn-More:hover .icon-More-normal {
+            opacity: 0;
+            transform: rotate(15deg);
+        }
+
+        .btn-More:hover .icon-More-hover {
+            opacity: 1;
+            transform: rotate(0deg);
+        }
+
+        /* EFECTO CLIC ACTIVO */
+        .btn-More:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* VERSIÓN MOBILE */
+        @media (max-width: 768px) {
+            .btn-More {
+                padding: 16px 28px;
+                font-size: 16px;
+            }
+            .btn-More-icon {
+                margin-right: 12px;
+                width: 22px;
+                height: 22px;
+            }
+        }
